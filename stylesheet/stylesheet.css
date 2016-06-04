@@ -1,0 +1,15 @@
+#next, #previous {
+  background-color: red;
+  height: 40px;
+  width: 60px;
+}
+#studentInfo {
+  width: 380px;
+  margin: 40px auto 40px auto;
+  padding: 10px;
+  text-align: center;
+  border: 8px groove blue;
+}
+#container {
+  text-align: center;
+}
