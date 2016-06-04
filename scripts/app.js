@@ -5,7 +5,7 @@ $( function() {
        dataType: 'json',
        success: function( data ){
          //declaring global variables and functions for success
-         var x = 0;
+         var x = 0; //x is used to keep track of current array we are in
          var studentArray = data.students;
          var currentInfo = studentArray[x].first_name + ' ' + studentArray[x].last_name + ',  city: ' + studentArray[x].city + ',  shoutout: ' + studentArray[x].shoutout;
          var changeIndex = function(){
@@ -36,7 +36,9 @@ $( function() {
          newButtonNext.id = 'next';
          newButtonNext.className = 'button';
          var nextButton = new $('#container').append(newButtonNext);
+         //setting initial student info with first student in object
          $('#studentInfo').html(currentInfo);
+         //declaring interval for moving to next student info
          var timer = setInterval(function(){
            $('#studentInfo').fadeOut('slow', function(){
              x++;
@@ -45,6 +47,7 @@ $( function() {
              $('#studentInfo').fadeIn('slow');
            });
          }, 10000);
+         //declaring function I will use to reset the interval when prev or next button clicked
          function resetInterval() {
              clearInterval(timer);
              timer = setInterval(function () {
@@ -60,20 +63,24 @@ $( function() {
          //on click event to switch student ino
          $(document).on('click', '.button', function(){
            var $this = (this).id;
+           //fade out current info
            $('#studentInfo').fadeOut('slow', function(){
              if($this == newButtonPrev.id){
                changeIndex();
                x--;
+               //inserting new student info then fading it in
                $('#studentInfo').html(studentArray[x].first_name + ' ' + studentArray[x].last_name + ',  city: ' + studentArray[x].city + ',  shoutout: ' + studentArray[x].shoutout);
                $('#studentInfo').fadeIn('slow');
                resetInterval();
              } else if ($this == 'next') {
                x++;
                changeIndex();
+               //inserting new student info then fading it in
                $('#studentInfo').html(studentArray[x].first_name + ' ' + studentArray[x].last_name + ',  city: ' + studentArray[x].city + ',  shoutout: ' + studentArray[x].shoutout);
                $('#studentInfo').fadeIn('slow');
                resetInterval();
              } else {
+               //going through student array to find student info corresponding to button clicked
                for (var i = 0; i < studentArray.length; i++) {
                  var studentName = studentArray[i].first_name;
                  if($this == studentName){
