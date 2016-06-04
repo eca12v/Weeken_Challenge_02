@@ -103,4 +103,4 @@ $( function() {
 
      }); // end ajax  object
 
-  }); // end click getJSONAjax button
+  });
