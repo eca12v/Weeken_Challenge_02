@@ -38,6 +38,7 @@ $( function() {
          var nextButton = new $('#container').append(newButtonNext);
          //setting initial student info with first student in object
          $('#studentInfo').html(currentInfo);
+         $('#number').html((x + 1) + '/' + studentArray.length);
          //declaring interval for moving to next student info
          var timer = setInterval(function(){
            $('#studentInfo').fadeOut('slow', function(){
@@ -45,6 +46,7 @@ $( function() {
              changeIndex();
              $('#studentInfo').html(studentArray[x].first_name + ' ' + studentArray[x].last_name + ',  city: ' + studentArray[x].city + ',  shoutout: ' + studentArray[x].shoutout);
              $('#studentInfo').fadeIn('slow');
+             $('#number').html((x + 1) + '/' + studentArray.length);
            });
          }, 10000);
          //declaring function I will use to reset the interval when prev or next button clicked
@@ -56,6 +58,7 @@ $( function() {
                  changeIndex();
                  $('#studentInfo').html(studentArray[x].first_name + ' ' + studentArray[x].last_name + ',  city: ' + studentArray[x].city + ',  shoutout: ' + studentArray[x].shoutout);
                  $('#studentInfo').fadeIn('slow');
+                 $('#number').html((x + 1) + '/' + studentArray.length);
                });
              }, 10000);
          }
@@ -71,6 +74,7 @@ $( function() {
                //inserting new student info then fading it in
                $('#studentInfo').html(studentArray[x].first_name + ' ' + studentArray[x].last_name + ',  city: ' + studentArray[x].city + ',  shoutout: ' + studentArray[x].shoutout);
                $('#studentInfo').fadeIn('slow');
+               $('#number').html((x + 1) + '/' + studentArray.length);
                resetInterval();
              } else if ($this == 'next') {
                x++;
@@ -78,6 +82,7 @@ $( function() {
                //inserting new student info then fading it in
                $('#studentInfo').html(studentArray[x].first_name + ' ' + studentArray[x].last_name + ',  city: ' + studentArray[x].city + ',  shoutout: ' + studentArray[x].shoutout);
                $('#studentInfo').fadeIn('slow');
+               $('#number').html((x + 1) + '/' + studentArray.length);
                resetInterval();
              } else {
                //going through student array to find student info corresponding to button clicked
@@ -87,6 +92,7 @@ $( function() {
                    $('#studentInfo').html(studentArray[i].first_name + ' ' + studentArray[i].last_name + ',  city: ' + studentArray[i].city + ',  shoutout: ' + studentArray[i].shoutout);
                    $('#studentInfo').fadeIn('slow');
                    x = i;
+                   $('#number').html((x + 1) + '/' + studentArray.length);
                  }
                }
              }
